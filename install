@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# default installation to /usr/local/
+# you probably want to have /usr/local/bin in your $PATH
+PREFIX="/usr/local"
+PYSRC="designEvolver.py tweaks.py j5lib.py"
+FILES="designEvolver $PYSRC"
+DIR="$PREFIX/src/designEvolver"
+
+mkdir $DIR
+
+# setup python module dependencies
+virtualenv -p python3.3 $DIR/env
+$DIR/env/bin/pip install numpy
+$DIR/env/bin/pip install deap
+$DIR/env/bin/pip install biopython
+
+PYTHON="$DIR/env/bin/python"
+
+chmod +x $FILES
+cp $FILES $DIR/
+for f in $PYSRC;
+do
+	cat "#\!$PYTHON" | cat - $f >> $DIR/$f
+done
+ln -s $DIR/designEvolver $PREFIX/bin/designEvolver
+

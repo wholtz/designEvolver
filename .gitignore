@@ -1,0 +1,12 @@
+*.pyc
+*.swp
+j5parameters.csv
+mastersequences.csv
+masterzippedsequences.zip
+partslist.csv
+targetpartsorder.csv
+eugeneruleslist.eug
+j5_plasmids.csv
+j5_oligos.csv
+j5_directsyntheses.csv
+DE.log
